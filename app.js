@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 // const mongoConnect = require('./util/database').MongoClient;
 const session = require('express-session');
+const mongoose = require('mongoose');
 const mongoDBStore = require('connect-mongodb-session')(session);
 
 const User = require('./Dal/user');
@@ -15,7 +16,7 @@ const apiRouter = require('./routes/api');
 const app = express();
 const store = new mongoDBStore({
   uri: 'mongodb+srv://yaron:Aa123456@cluster0-youhq.mongodb.net/shop',
-  collection: 'sessions'
+  collection: 'sessions',
 });
 
 // view engine setup
@@ -36,7 +37,7 @@ app.use((req, res, next) => {
   if (req.session.user) {
     return next();
   }
-  User.findById('5d4ede54d2b3c543883b0d3a').then(user => {
+  User.findById('5d4ede54d2b3c543883b0d3a').then((user) => {
     req.user = user;
     next();
   });
@@ -61,6 +62,12 @@ app.use((err, req, res, next) => {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+mongoose.connect(process.env.CONNECTION_CONFIG).then((res) => {
+  app.listen(3002, () => {
+    console.log('running on port: ', 3002);
+  });
 });
 
 module.exports = app;
