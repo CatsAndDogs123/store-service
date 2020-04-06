@@ -5,8 +5,8 @@
   "scripts": {
     "server": "nodemon app.js",
     "serve": "./node_modules/.bin/nodemon -r dotenv/config app.js",
-    "build": "node app.js -r dotenv/config app.js",
-    "start": "npm run build"
+    "hello": "node app.js -r dotenv/config app.js",
+    "start": "npm run hello"
   },
   "dependencies": {
     "@hapi/joi": "^15.0.3",
