@@ -19,7 +19,7 @@ const app = express();
 app.use(cors());
 
 const store = new mongoDBStore({
-  uri: process.env.CONNECTION_CONFIG,
+  uri: 'mongodb+srv://yaron:Aa123456@cluster0-youhq.mongodb.net/shop',
   collection: 'sessions',
 });
 
@@ -67,7 +67,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
-
+console.log(process.env.CONNECTION_CONFIG, ' connnn');
 mongoose.connect(process.env.CONNECTION_CONFIG).then((res) => {
   app.listen(3002, () => {
     console.log('running on port: ', 3002);
