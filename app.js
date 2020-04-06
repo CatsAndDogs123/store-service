@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 // const mongoConnect = require('./util/database').MongoClient;
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -14,6 +15,9 @@ const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
 const app = express();
+
+app.use(cors());
+
 const store = new mongoDBStore({
   uri: 'mongodb+srv://yaron:Aa123456@cluster0-youhq.mongodb.net/shop',
   collection: 'sessions',
