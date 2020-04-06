@@ -19,7 +19,7 @@ const app = express();
 app.use(cors());
 
 const store = new mongoDBStore({
-  uri: 'mongodb+srv://yaron:Aa123456@cluster0-youhq.mongodb.net/shop',
+  uri: process.env.CONNECTION_CONFIG,
   collection: 'sessions',
 });
 
