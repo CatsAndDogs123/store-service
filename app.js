@@ -69,8 +69,8 @@ app.use((err, req, res, next) => {
 });
 console.log(process.env.CONNECTION_CONFIG, ' connnn');
 mongoose.connect(process.env.CONNECTION_CONFIG).then((res) => {
-  app.listen(3002, () => {
-    console.log('running on port: ', 3002);
+  app.listen(8080, () => {
+    console.log('running on port: ', 8080);
   });
 });
 
