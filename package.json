@@ -5,8 +5,8 @@
   "scripts": {
     "server": "nodemon app.js",
     "serve": "./node_modules/.bin/nodemon -r dotenv/config app.js",
-    "watch": "./node_modules/.bin/concurrently -k -p \"[{name}]\" -n \"TypeScript,node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run serve\"",
-    "start": "npm run watch"
+    "build": "node app.js",
+    "start": "npm run build"
   },
   "dependencies": {
     "@hapi/joi": "^15.0.3",
@@ -15,7 +15,6 @@
     "body-parser": "^1.19.0",
     "connect-mongodb-session": "^2.2.0",
     "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
